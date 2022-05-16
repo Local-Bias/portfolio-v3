@@ -24,7 +24,7 @@ const Component: FC = () => (
     ))}
     <h2>その他、経験したこと</h2>
     {experiences.map(({ title, descriptions }, i) => (
-      <section>
+      <section key={i}>
         <h3>{title}</h3>
         {descriptions.map((description, j) => (
           <p key={`${i}-${j}`}>{description}</p>
