@@ -105,7 +105,8 @@ export type Indicator = {
 
 export type Product = {
   title: string;
-  description: string;
+  descriptions: string[];
+  img?: string;
   indicators?: Indicator[];
   link?: string;
   linkLabel?: string;
@@ -113,61 +114,79 @@ export type Product = {
 
 export const products: Product[] = [
   {
-    title: 'ウェブアプリ kula',
-    description:
-      '株式会社サイボウズの提供しているクラウドサービス「kintone」との連携を想定したウェブアプリを運営しています。Next.jsとFirebaseを使って開発しました。',
+    title: 'kula (ウェブアプリ)',
+    descriptions: [
+      '株式会社サイボウズの提供している業務改善プラットフォーム「kintone」との連携を想定したウェブアプリを運営しています。',
+      'kintoneとは、業務で使用する様々な情報をアプリ単位で管理するプラットフォームです。類似するアプリとしてはMicrosoftのPower AppsやGoogleのAppSheetが近いと思いますが、SFAやCRMとして活用されることも多く、SalesForceやZoho CRMと比較されることもあります。',
+      'kulaではこの1アプリをCMSのように捉え、APIを介してデータを取得し、ブログやオウンドメディアを作成することができるサービスです。',
+      'バックエンドを伴うウェブアプリを初めて作成しました。Next.jsとFirebaseを使って開発しています。',
+    ],
     indicators: [],
     link: 'https://kula.konomi.app',
     linkLabel: 'サイトはこちら',
   },
   {
-    title: 'このサイト',
-    description:
-      '以前はGatsby.jsで作成していましたが、デザインを一新するタイミングでNext.jsに変更しました。 デプロイはVercelです。',
-    indicators: [
-      {
-        value: 97,
-        unit: '/100点',
-        description: 'Google PageSpeed Insightsで計測したモバイル版のサイトパフォーマンス',
-      },
+    title: 'kintoneプラグイン',
+    descriptions: [
+      'kintoneに用意されているエコシステムの1つとして、プラグインがあります。プラグインの構成はChromeの拡張機能に似ており、HTML、CSS、JavaScriptで構成され、導入することで、kintoneの機能を拡張することができます。',
+      '私はオープンソースで10個以上のプラグインを公開しており、導入いただいた法人は2022年5月に600社を超えました。',
     ],
-  },
-  {
-    title: 'Kintoneプラグイン',
-    description:
-      '株式会社サイボウズの提供しているクラウドサービス「Kintone」で利用可能なプラグインを開発しています。導入実績は2022年4月に500社を超えました。',
-    indicators: [
-      { value: 233, unit: '社', description: 'ご利用いただいた企業数' },
-      { value: 342119, unit: '回', description: 'プラグインが実行された回数' },
-    ],
+    link: 'https://ribbit.konomi.app/kintone-plugin',
+    linkLabel: '紹介ページはこちら',
   },
   {
     title: 'ブログ',
-    description:
+    descriptions: [
       'ホスティングはGatsbyCloud、コンテンツ管理はContentful、プログラムはGithubという構成で作成。月の閲覧数は5,000程です。',
-    indicators: [
-      { value: 82, unit: '記事', description: '掲載している記事の数' },
-      { value: 5200, unit: 'view/月', description: '月あたりの閲覧数' },
     ],
     link: 'https://ribbit.konomi.app',
     linkLabel: 'サイトはこちら',
   },
   {
+    title: 'Kokoroe (ブログ)',
+    descriptions: [
+      'Mozillaが運営するmdn web docsのようなドキュメントサイトを、Metaの開発するDocusaurusを使って作成しました。',
+      '構造が異なるだけで、実質はブログです。',
+    ],
+    link: 'https://kokoroe.konomi.app',
+    linkLabel: 'サイトはこちら',
+  },
+
+  {
+    title: 'ポートフォリオv3(このサイト)',
+    descriptions: [
+      'Next.jsでポートフォリオを作り直しました。訪問者が欲しい情報にたどり着きやすいことを意識して作成しました。',
+    ],
+  },
+  {
+    title: 'ポートフォリオv2',
+    descriptions: [
+      '以前はGatsby.jsで作成していましたが、デザインを一新するタイミングでNext.jsに変更しました。 デプロイはVercelです。',
+    ],
+  },
+  {
+    title: 'ポートフォリオv1',
+    descriptions: [
+      'はじめて作成したポートフォリオサイトです。Gatsby.jsで作成、netlifyにデプロイ。',
+    ],
+    link: 'https://ribbitlify.netlify.app',
+    linkLabel: 'サイトはこちら',
+  },
+];
+
+export const experiences: { title: string; descriptions: string[] }[] = [
+  {
     title: 'チャットボット',
-    description:
+    descriptions: [
       '構成はChatwork × Google Apps Script。 ChatworkのWeb hookをGASで取得して、対応するメッセージをPOSTするという方法で実装していました。',
+    ],
   },
   {
     title: 'WEBセミナー',
-    description:
-      'ITを活用した業務効率化をテーマに、中小企業向けのWEBセミナーの講師を担当しました。',
-  },
-  {
-    title: '旧ポートフォリオ',
-    description:
-      'このサイトを作成する前のポートフォリオサイトです。Gatsby.jsで作成、GitHubでリポジトリ管理、netlifyでデプロイを行いました。',
-    link: 'https://ribbitlify.netlify.app',
-    linkLabel: 'サイトはこちら',
+    descriptions: [
+      '税理士法人に在席中は、ITを活用した業務改善を、社内、社外いずれも行っていました。',
+      '関与先法人についてはコンサルティング契約を結んでいましたが、その広報の一環として無料のウェブセミナーを定期的に行っており、その中でITを活用した業務効率化をテーマに、中小企業向けのWEBセミナーの講師を担当しました。',
+    ],
   },
 ];
 
