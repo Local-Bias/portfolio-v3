@@ -218,7 +218,7 @@ export const careers: { title: string; descriptions: string[] }[] = [
 
 export const todoList: { title: string; descriptions: string[] }[] = [
   {
-    title: '「働きたい」と思えるような会社づくりのサポートをしたい',
+    title: '「貢献したい」と思えるような会社づくりのサポートをしたい',
     descriptions: [
       'スターリン時代の旧ソ連も、毛沢東時代の中国も、国民が無能だったから衰退したわけではありません。',
       '共産主義という国の「ルール」に綻びがあったからこそ衰退をまねいたのだと考えています。',
