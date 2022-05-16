@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Noto Sans JP', 'Yu Gothic Medium', YuGothic, 'Yu Gothic', 'ヒラギノ角ゴ Pro W3',
+    'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+  @apply text-black font-normal;
+}
+
+article li {
+  @apply ml-4;
+}
+
+article h1 {
+  @apply text-slate-800 text-2xl sm:text-3xl text-center mb-12 md:mb-16;
+}
+
+article h2 {
+  @apply block text-slate-800 text-2xl mb-3 md:mb-6 border-b-2 py-4 mt-8 border-slate-600;
+}
+
+article h3 {
+  @apply text-slate-700 text-xl mb-3 md:mb-6 mt-8 border-l-8 border-slate-800 pl-4;
+}
+
+article p {
+  @apply text-slate-700 text-base mb-6 md:mb-8;
+}
+
+article a {
+  @apply text-teal-700;
+}
