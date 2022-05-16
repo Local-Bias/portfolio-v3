@@ -28,19 +28,19 @@ const Component: FC = () => {
   }, []);
 
   return (
-    <div className='block md:hidden'>
-      <header className='sticky top-0 h-12 px-2 flex justify-between items-center'>
+    <>
+      <header className='flex md:hidden sticky top-0 h-12 px-2 justify-between items-center'>
         <div>{meta.title}</div>
-        <div id='header-menu-icon' className='cursor-pointer' onClick={toggle}>
-          🐢
+        <div id='header-menu-icon' onClick={toggle} className='cursor-pointer w-6 h-6 relative'>
+          <div className='bg-black w-full h-[2px] absolute top-1/2 left-0 before:content-[""] before:bg-black before:h-[2px] before:w-full before:absolute before:left-0 before:-top-2 after:content-[""] after:bg-black after:h-[2px] after:w-full after:absolute after:left-0 after:-bottom-2'></div>
         </div>
       </header>
       {menuShown && (
-        <div className='fixed z-10 opacity-0 animate-appear w-screen h-screen bg-white'>
+        <div className='fixed z-50 opacity-0 animate-appear w-screen h-screen bg-white'>
           <Common />
         </div>
       )}
-    </div>
+    </>
   );
 };
 
