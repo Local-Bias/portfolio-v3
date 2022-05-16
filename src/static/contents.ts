@@ -165,6 +165,8 @@ export const products: Product[] = [
     descriptions: [
       '以前はGatsby.jsで作成していましたが、デザインを一新するタイミングでNext.jsに変更しました。 デプロイはVercelです。',
     ],
+    link: 'https://portfolio.v2.konomi.app',
+    linkLabel: 'サイトはこちら',
   },
   {
     title: 'ポートフォリオv1',
