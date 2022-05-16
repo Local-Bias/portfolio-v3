@@ -47,7 +47,10 @@ const Component: FC = () => {
       <section>
         <h3>kintoneプラグイン</h3>
         <p>
-          株式会社サイボウズの提供するクラウドサービスである<a target='_blank'>kintone</a>
+          株式会社サイボウズの提供するクラウドサービスである
+          <a target='_blank' rel='nofollow noopener noreferrer'>
+            kintone
+          </a>
           の拡張機能である、kintoneプラグインをオープンソースで開発しています。
         </p>
         {!!indicator && (

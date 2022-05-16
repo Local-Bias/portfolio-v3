@@ -16,7 +16,7 @@ const Component: FC = () => (
           <p key={`${i}-${j}`}>{description}</p>
         ))}
         {!!product.link && (
-          <a target='_blank' href={product.link}>
+          <a target='_blank' href={product.link} rel='nofollow noopener noreferrer'>
             {product.linkLabel || 'サイトはこちら'}
           </a>
         )}
