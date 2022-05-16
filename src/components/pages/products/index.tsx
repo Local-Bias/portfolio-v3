@@ -5,7 +5,7 @@ import { experiences, products } from 'src/static/contents';
 const Component: FC = () => (
   <article className='px-4 py-8 md:py-16'>
     <div className='flex justify-center'>
-      <Image src='/img/tree.png' alt='大きな木' width={200} height={200} />
+      <Image priority loading='eager' src='/img/tree.png' alt='大きな木' width={200} height={200} />
     </div>
     <h1 className='mt-8'>つくったもの</h1>
     {products.map((product, i) => (

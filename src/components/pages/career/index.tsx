@@ -5,7 +5,14 @@ import { careers } from 'src/static/contents';
 const Component: FC = () => (
   <article className='px-4 py-8 md:py-16'>
     <div className='flex justify-center'>
-      <Image src='/img/bag.png' alt='ビジネスバッグ' width={200} height={200} />
+      <Image
+        priority
+        loading='eager'
+        src='/img/bag.png'
+        alt='ビジネスバッグ'
+        width={200}
+        height={200}
+      />
     </div>
     <h1 className='mt-8'>経歴</h1>
     <section>

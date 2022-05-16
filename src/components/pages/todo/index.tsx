@@ -5,7 +5,14 @@ import { todoList } from 'src/static/contents';
 const Component: FC = () => (
   <article className='px-4 py-8 md:py-16'>
     <div className='flex justify-center'>
-      <Image src='/img/reading.png' alt='本の上で読書をする人' width={200} height={200} />
+      <Image
+        priority
+        loading='eager'
+        src='/img/reading.png'
+        alt='本の上で読書をする人'
+        width={200}
+        height={200}
+      />
     </div>
     <h1 className='mt-8'>やること(やりたいこと)</h1>
     {todoList.map(({ title, descriptions }, i) => (
