@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { experiences, products } from 'src/static/contents';
 
 const Component: FC = () => (
-  <article className='py-8 md:py-16'>
+  <article className='px-4 py-8 md:py-16'>
     <div className='flex justify-center'>
       <Image src='/img/tree.png' alt='大きな木' width={200} height={200} />
     </div>

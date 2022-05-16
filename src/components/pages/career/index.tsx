@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { careers } from 'src/static/contents';
 
 const Component: FC = () => (
-  <article className='py-8 md:py-16'>
+  <article className='px-4 py-8 md:py-16'>
     <div className='flex justify-center'>
       <Image src='/img/bag.png' alt='ビジネスバッグ' width={200} height={200} />
     </div>
@@ -11,7 +11,7 @@ const Component: FC = () => (
     <section>
       {careers.map(({ title, descriptions }, i) => (
         <section key={i}>
-          <h3>{title}</h3>
+          <h2>{title}</h2>
           {descriptions.map((description, j) => (
             <p key={`${i}-${j}`}>{description}</p>
           ))}

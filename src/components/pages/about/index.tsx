@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React, { FC } from 'react';
 
 const Component: FC = () => (
-  <article className='py-8 md:py-16'>
+  <article className='px-4 py-8 md:py-16'>
     <div className='flex justify-center'>
       <Image src='/img/person.png' alt='シャツを着た人' width={200} height={200} />
     </div>
