@@ -7,7 +7,7 @@ import { TableIcon } from 'src/components/ui/icons/table';
 import { UserIcon } from 'src/components/ui/icons/user';
 
 const Component: FC = () => (
-  <aside className='sticky top-0 mx-auto' aria-label='サイドバー'>
+  <aside aria-label='サイドバー'>
     <Link href='/'>
       <a>
         <div className='flex justify-center items-center'>
