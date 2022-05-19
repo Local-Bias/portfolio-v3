@@ -155,7 +155,7 @@ export const products: Product[] = [
   {
     title: 'ポートフォリオv3(このサイト)',
     descriptions: [
-      'Next.jsでポートフォリオを作り直しました。訪問者が欲しい情報にたどり着きやすいことを意識して作成しました。',
+      '訪問者が欲しい情報にたどり着きやすいことを意識して作り直しました。Next.jsで作成、Cloudflare Pagesにデプロイ。',
     ],
     link: 'https://github.com/Local-Bias/portfolio-v3',
     linkLabel: 'GitHub',
@@ -163,7 +163,7 @@ export const products: Product[] = [
   {
     title: 'ポートフォリオv2',
     descriptions: [
-      '以前はGatsby.jsで作成していましたが、デザインを一新するタイミングでNext.jsに変更しました。 デプロイはVercelです。',
+      'Next.jsのISRを知って使ってみたくなり、実績を全面的に押し出したサイトにリニューアルしました。 Next.jsで作成、Vercelにデプロイ。',
     ],
     link: 'https://portfolio.v2.konomi.app',
     linkLabel: 'サイトはこちら',
