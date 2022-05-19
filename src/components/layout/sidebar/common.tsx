@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import React, { FC } from 'react';
 import { BagIcon } from 'src/components/ui/icons/bag';
@@ -11,7 +10,7 @@ const Component: FC = () => (
     <Link href='/'>
       <a>
         <div className='flex justify-center items-center'>
-          <Image src='/img/dog.png' alt='横たわった犬' width={150} height={150} />
+          <img src='/img/dog.webp' alt='横たわった犬' width={150} height={150} />
         </div>
       </a>
     </Link>
