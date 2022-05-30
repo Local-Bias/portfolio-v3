@@ -15,7 +15,8 @@ const Component: FC = () => (
       <section>
         <p>Ribbitと申します。</p>
         <p>1993年生まれです。今年で{new Date().getFullYear() - 1993}歳。</p>
-        <p>趣味はプログラミング、ゲーム、料理。</p>
+        <p>趣味はプログラミング、料理、コーヒー。</p>
+        <p>好きなフォントは源の角ゴシック。</p>
       </section>
     </article>
   </>
