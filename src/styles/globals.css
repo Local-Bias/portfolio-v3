@@ -13,19 +13,19 @@ article li {
 }
 
 article h1 {
-  @apply text-slate-800 text-2xl sm:text-3xl text-center mb-12 md:mb-16;
+  @apply text-gray-800 text-2xl sm:text-3xl text-center mb-12 md:mb-16;
 }
 
 article h2 {
-  @apply block text-slate-800 text-2xl mb-3 md:mb-6 border-b-2 py-4 mt-8 border-slate-600;
+  @apply block text-gray-800 text-2xl mb-3 md:mb-6 border-b-2 py-4 mt-8 border-gray-600;
 }
 
 article h3 {
-  @apply text-slate-700 text-xl mb-3 md:mb-6 mt-8 border-l-8 border-slate-800 pl-4;
+  @apply text-gray-700 text-xl mb-3 md:mb-6 mt-8 border-l-8 border-gray-800 pl-4;
 }
 
 article p {
-  @apply text-slate-700 text-base mb-6 md:mb-8;
+  @apply text-gray-700 text-base mb-6 md:mb-8;
 }
 
 article a {
