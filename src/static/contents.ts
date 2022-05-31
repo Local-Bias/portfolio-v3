@@ -13,13 +13,17 @@ export const skills: Skill[] = [
         name: 'TypeScript',
         type: 'inProgress',
         since: new Date(2021, 0, 1),
+      },
+      {
+        name: 'JavaScript',
+        type: 'inProgress',
+        since: new Date(2015, 0, 1),
         children: [
           { name: 'React', type: 'inProgress', since: new Date(2021, 0, 1) },
           { name: 'Next.js', type: 'inProgress', since: new Date(2021, 5, 1) },
           { name: 'Gatsby.js', type: 'pending', daysOfExperience: 365 },
         ],
       },
-      { name: 'JavaScript', type: 'inProgress', since: new Date(2015, 0, 1) },
       { name: 'Node.js', type: 'inProgress', since: new Date(2021, 0, 1) },
       {
         name: 'Java',
