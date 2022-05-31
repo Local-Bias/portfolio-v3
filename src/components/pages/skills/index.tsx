@@ -36,7 +36,7 @@ const SkillItem: FC<{ skill: Skill }> = ({ skill }) => {
   return (
     <li className='ml-4'>
       <div
-        className={`flex items-center justify-between mb-1 p-2 transition rounded-md hover:bg-gray-100 ${
+        className={`flex items-center justify-between p-2 transition rounded-md hover:bg-gray-100 ${
           !!skill.children && 'cursor-pointer'
         }`}
         onClick={toggle}
@@ -56,7 +56,7 @@ const SkillItem: FC<{ skill: Skill }> = ({ skill }) => {
 
 const SkillTree: FC<{ skills: Skill[] }> = ({ skills }) => {
   return (
-    <ul className='flex flex-col gap-2 opacity-90'>
+    <ul className='flex flex-col gap-2 opacity-90 mt-2'>
       {skills.map((skill, i) => (
         <SkillItem key={i} skill={skill} />
       ))}
