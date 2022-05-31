@@ -1,60 +1,61 @@
 export type Skill = {
   name: string;
-  description: string;
   children?: Skill[];
-};
+} & ({ type: 'pending'; daysOfExperience: number } | { type: 'inProgress'; since: Date });
 
 export const skills: Skill[] = [
   {
-    name: '言語',
-    description: '',
+    name: 'プログラミング言語',
+    type: 'pending',
+    daysOfExperience: 0,
     children: [
       {
         name: 'TypeScript',
-        description: '1日で触れている時間が最も長いのがこの言語です。',
+        type: 'inProgress',
+        since: new Date(2021, 0, 1),
         children: [
-          { name: 'React', description: '' },
-          { name: 'Next.js', description: '' },
-          { name: 'Gatsby.js', description: '現在も更新中のブログは、Gatsby.jsで作成しました。' },
+          { name: 'React', type: 'inProgress', since: new Date(2021, 0, 1) },
+          { name: 'Next.js', type: 'inProgress', since: new Date(2021, 5, 1) },
+          { name: 'Gatsby.js', type: 'pending', daysOfExperience: 365 },
         ],
       },
-      { name: 'JavaScript', description: 'TypeScriptが使えるのであれば、TypeScriptを使います。' },
-      { name: 'Node.js', description: '開発環境' },
+      { name: 'JavaScript', type: 'inProgress', since: new Date(2015, 0, 1) },
+      { name: 'Node.js', type: 'inProgress', since: new Date(2021, 0, 1) },
       {
         name: 'Java',
-        description: '前職であるシステム開発会社に勤務していた際、主に使用していた言語です。',
+        type: 'pending',
+        daysOfExperience: 365 * 2 + 30 * 9,
       },
       {
         name: 'HTML',
-        description: '',
-        children: [{ name: 'Pug', description: '' }],
+        type: 'inProgress',
+        since: new Date(2015, 0, 1),
+        children: [{ name: 'Pug', type: 'pending', daysOfExperience: 365 }],
       },
       {
         name: 'CSS',
-        description: '',
-        children: [
-          { name: 'SCSS', description: '' },
-          { name: 'Sass', description: '' },
-        ],
+        type: 'inProgress',
+        since: new Date(2015, 0, 1),
+        children: [{ name: 'SCSS', type: 'inProgress', since: new Date(2021, 0, 1) }],
       },
-      { name: 'VBA', description: '' },
+      { name: 'VBA', type: 'inProgress', since: new Date(2021, 0, 1) },
     ],
   },
   {
     name: 'データベース',
-    description: '',
-    children: [
-      { name: 'db2', description: '前職でJavaと併せて、バックエンド開発に使用していました。' },
-    ],
+    type: 'pending',
+    daysOfExperience: 0,
+    children: [{ name: 'db2', type: 'pending', daysOfExperience: 365 * 2 + 30 * 9 }],
   },
   {
     name: 'ツール',
-    description: '',
+    type: 'pending',
+    daysOfExperience: 0,
     children: [
-      { name: 'VSCode', description: '' },
-      { name: 'Docker', description: '' },
-      { name: 'Git', description: '' },
-      { name: 'Firebase', description: '' },
+      { name: 'VSCode', type: 'inProgress', since: new Date(2021, 0, 1) },
+      { name: 'Docker', type: 'inProgress', since: new Date(2022, 0, 1) },
+      { name: 'Git', type: 'inProgress', since: new Date(2021, 0, 1) },
+      { name: 'Firebase', type: 'inProgress', since: new Date(2022, 0, 1) },
     ],
   },
 ];
