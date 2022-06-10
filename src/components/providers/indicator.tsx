@@ -2,21 +2,20 @@ import { ReactNode, createContext, useContext } from 'react';
 
 export type ContextProps = Partial<{
   indicator: external.Indicator | null;
+  lastModified: string | null;
 }>;
 
 export type ProviderProps = {
-  initialValue: external.Indicator | null;
+  initialValue: { indicator: external.Indicator | null; lastModified: string | null };
   children: ReactNode;
 };
 
 const IndicatorContext = createContext<ContextProps>({});
 
-export const useIndicatorContext = () => {
+export const useIndicator = () => {
   return useContext(IndicatorContext);
 };
 
 export const IndicatorProvider = (props: ProviderProps) => (
-  <IndicatorContext.Provider value={{ indicator: props.initialValue }}>
-    {props.children}
-  </IndicatorContext.Provider>
+  <IndicatorContext.Provider value={props.initialValue}>{props.children}</IndicatorContext.Provider>
 );
