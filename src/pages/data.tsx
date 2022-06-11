@@ -9,7 +9,10 @@ type StaticProps = { indicator: external.Indicator | null; lastModified: string 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   const indicator = await fetchKintonePluginIndicator();
 
-  const lastModified = getFormattedDate(new Date(), 'M月d日 h時m分');
+  const us = new Date();
+  us.setHours(us.getHours() + 9);
+
+  const lastModified = getFormattedDate(us, 'M月d日 h時m分');
 
   return {
     props: { indicator, lastModified },
