@@ -1,9 +1,13 @@
 import Head from 'next/head';
-import React, { FC } from 'react';
+import React, { FC, Suspense } from 'react';
 import { useIndicator } from 'src/components/providers/indicator';
 import { meta } from 'src/static/site-config';
 
+import dynamic from 'next/dynamic';
+
 const TITLE = `数字で知るRibbit`;
+
+const DynamicComponent = dynamic(() => import('./chart'), { ssr: false });
 
 const UserData: FC = () => {
   const { indicator, lastModified } = useIndicator();
@@ -22,7 +26,9 @@ const UserData: FC = () => {
           現在{indicator.numUsers.toLocaleString()}社にご利用いただいています。(最終更新:{' '}
           {lastModified})
         </p>
-        <img src='/img/products/number-of-users.webp' />
+        <Suspense fallback={<p>Loading...</p>}>
+          <DynamicComponent />
+        </Suspense>
       </section>
       <section>
         <h3>実行回数</h3>
