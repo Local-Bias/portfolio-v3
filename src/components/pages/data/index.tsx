@@ -1,16 +1,13 @@
 import Head from 'next/head';
 import React, { FC, Suspense } from 'react';
-import { useIndicator } from 'src/components/providers/indicator';
+import { useStaticData } from 'src/components/providers/static-data';
 import { meta } from 'src/static/site-config';
-
-import dynamic from 'next/dynamic';
+import KintoneUserChart from './chart';
 
 const TITLE = `数字で知るRibbit`;
 
-const DynamicComponent = dynamic(() => import('./chart'), { ssr: false });
-
 const UserData: FC = () => {
-  const { indicator, lastModified } = useIndicator();
+  const { indicator, lastModified } = useStaticData();
 
   if (!indicator) {
     return <div>利用者情報の取得に失敗しました</div>;
@@ -27,7 +24,7 @@ const UserData: FC = () => {
           {lastModified})
         </p>
         <Suspense fallback={<p>Loading...</p>}>
-          <DynamicComponent />
+          <KintoneUserChart />
         </Suspense>
       </section>
       <section>

@@ -1,29 +1,40 @@
 import React, { FC } from 'react';
-import { CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts';
+import {
+  CartesianGrid,
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
+import { useStaticData } from 'src/components/providers/static-data';
 import { getFormattedDate } from 'src/lib/util';
-import { numberOfUsers } from 'src/static/data';
 
 const Component: FC = () => {
+  const { kintoneUserSummary } = useStaticData();
+
+  if (!kintoneUserSummary) {
+    return <div>データの取得に失敗しました</div>;
+  }
+
   return (
-    <LineChart
-      width={730}
-      height={250}
-      data={numberOfUsers}
-      margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-    >
-      <CartesianGrid />
-      <XAxis
-        domain={['dataMin', 'dataMax']}
-        dataKey='unixTime'
-        tickFormatter={(unixTime) => getFormattedDate(new Date(unixTime), 'yyyy-MM-dd')}
-        type='number'
-      />
-      <YAxis />
-      <Tooltip
-        labelFormatter={(unixTime) => getFormattedDate(new Date(unixTime), 'yyyy-MM-dd hh時mm分')}
-      />
-      <Line dot={false} strokeWidth={3} type='monotone' dataKey='count' stroke='#82ca9d' />
-    </LineChart>
+    <ResponsiveContainer width='100%' height={250}>
+      <LineChart data={kintoneUserSummary} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+        <CartesianGrid />
+        <XAxis
+          domain={['dataMin', 'dataMax']}
+          dataKey='unixTime'
+          tickFormatter={(unixTime) => getFormattedDate(new Date(unixTime), 'yyyy-MM-dd')}
+          type='number'
+        />
+        <YAxis />
+        <Tooltip
+          labelFormatter={(unixTime) => getFormattedDate(new Date(unixTime), 'yyyy年M月d日')}
+        />
+        <Line dot={false} strokeWidth={3} type='monotone' dataKey='count' stroke='#82ca9d' />
+      </LineChart>
+    </ResponsiveContainer>
   );
 };
 
