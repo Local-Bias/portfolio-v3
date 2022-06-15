@@ -1,26 +1,8 @@
 import { get, ref } from 'firebase/database';
+import { DateTime } from 'luxon';
 import { rtdb } from './firebase/rdtb';
 
-export const fetchKintonePluginIndicator = async (): Promise<external.Indicator | null> => {
-  if (!process.env.KINTONE_PLUGIN_INDICATOR_END_POINT) {
-    return null;
-  }
-
-  const response = await fetch(process.env.KINTONE_PLUGIN_INDICATOR_END_POINT);
-
-  const data: Partial<external.Indicator> = await response.json();
-
-  const indicators: external.Indicator = {
-    numUsers: data.numUsers || 0,
-    counter: data.counter || 0,
-  };
-
-  return indicators;
-};
-
-export const fetchKintoneUserSummary = async (): Promise<
-  website.graphData.KintoneUser[] | null
-> => {
+export const fetchKintoneUserSummary = async (): Promise<external.kintone.Summary | null> => {
   const summaryRef = ref(rtdb, 'kintone/summary');
 
   const snapshot = await get(summaryRef);
@@ -31,10 +13,61 @@ export const fetchKintoneUserSummary = async (): Promise<
 
   const summary: external.kintone.Summary = snapshot.val();
 
-  const graphData = Object.values(summary).map<website.graphData.KintoneUser>((row) => ({
-    unixTime: row.unixTime * 1000,
-    count: row.numUsers,
-  }));
+  return summary;
+};
 
-  return graphData;
+export const fetchKintoneActiveUser = async (): Promise<Record<
+  string,
+  website.graphData.Material
+> | null> => {
+  const installDateRef = ref(rtdb, 'kintone/installDate');
+  const lastModifiedRef = ref(rtdb, 'kintone/lastModified');
+
+  const installDateSnapshot = await get(installDateRef);
+  const lastModifiedSnapshot = await get(lastModifiedRef);
+
+  if (!installDateSnapshot.exists() || !lastModifiedSnapshot.exists()) {
+    return null;
+  }
+
+  const installDate: Record<string, string> = installDateSnapshot.val();
+  const lastModified: Record<string, string> = lastModifiedSnapshot.val();
+
+  let date = DateTime.local(2022, 2, 18);
+  let now = DateTime.local();
+
+  const user = Object.entries(installDate).map(([domain, date]) => {
+    return {
+      installDate: DateTime.fromISO(date),
+      lastModified: DateTime.fromISO(lastModified[domain]) || null,
+    };
+  });
+
+  const correctData = user.filter(({ lastModified }) => !!lastModified) as {
+    installDate: DateTime;
+    lastModified: DateTime;
+  }[];
+
+  const results: Record<string, website.graphData.Material> = {};
+
+  let loopIndex = 0;
+  while (now > date) {
+    const targets = correctData.filter(
+      ({ installDate, lastModified }) =>
+        date > installDate && date.minus({ days: 28 }) < lastModified
+    );
+
+    results[date.toISODate()] = {
+      unixTime: date.toUnixInteger() * 1000,
+      count: targets.length,
+    };
+
+    date = date.plus({ days: 1 });
+    loopIndex++;
+    if (loopIndex > 30000) {
+      break;
+    }
+  }
+
+  return results;
 };

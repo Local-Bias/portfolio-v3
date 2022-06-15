@@ -12,15 +12,15 @@ import { useStaticData } from 'src/components/providers/static-data';
 import { getFormattedDate } from 'src/lib/util';
 
 const Component: FC = () => {
-  const { kintoneUserSummary } = useStaticData();
+  const { kintoneGraphData } = useStaticData();
 
-  if (!kintoneUserSummary) {
+  if (!kintoneGraphData) {
     return <div>データの取得に失敗しました</div>;
   }
 
   return (
     <ResponsiveContainer width='100%' height={250}>
-      <LineChart data={kintoneUserSummary} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+      <LineChart data={kintoneGraphData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
         <CartesianGrid />
         <XAxis
           domain={['dataMin', 'dataMax']}
@@ -32,7 +32,8 @@ const Component: FC = () => {
         <Tooltip
           labelFormatter={(unixTime) => getFormattedDate(new Date(unixTime), 'yyyy年M月d日')}
         />
-        <Line dot={false} strokeWidth={3} type='monotone' dataKey='count' stroke='#82ca9d' />
+        <Line dot={false} strokeWidth={3} type='monotone' dataKey='total' stroke='#00b6cb' />
+        <Line dot={false} strokeWidth={3} type='monotone' dataKey='active' stroke='#4dccdb' />
       </LineChart>
     </ResponsiveContainer>
   );

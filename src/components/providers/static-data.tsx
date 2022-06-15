@@ -1,15 +1,13 @@
 import { ReactNode, createContext, useContext } from 'react';
 
 export type ContextProps = Partial<{
-  indicator: external.Indicator | null;
-  kintoneUserSummary: website.graphData.KintoneUser[] | null;
+  kintoneGraphData: website.graphData.KintoneUser[] | null;
   lastModified: string | null;
 }>;
 
 export type ProviderProps = {
   initialValue: {
-    indicator: external.Indicator | null;
-    kintoneUserSummary: website.graphData.KintoneUser[] | null;
+    kintoneGraphData: website.graphData.KintoneUser[] | null;
     lastModified: string | null;
   };
   children: ReactNode;

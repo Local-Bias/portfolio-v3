@@ -7,11 +7,13 @@ import KintoneUserChart from './chart';
 const TITLE = `数字で知るRibbit`;
 
 const UserData: FC = () => {
-  const { indicator, lastModified } = useStaticData();
+  const { kintoneGraphData } = useStaticData();
 
-  if (!indicator) {
+  if (!kintoneGraphData) {
     return <div>利用者情報の取得に失敗しました</div>;
   }
+
+  const latestData = kintoneGraphData[kintoneGraphData.length - 1];
 
   return (
     <section>
@@ -20,8 +22,9 @@ const UserData: FC = () => {
       <section>
         <h3>利用法人数</h3>
         <p>
-          現在{indicator.numUsers.toLocaleString()}社にご利用いただいています。(最終更新:{' '}
-          {lastModified})
+          今まで{latestData.total.toLocaleString()}社に導入いただき、現在も
+          {latestData.active.toLocaleString()}
+          社にご利用いただいています。(過去28日の間で1度でも実行されたユーザー数から算出)
         </p>
         <Suspense fallback={<p>Loading...</p>}>
           <KintoneUserChart />
@@ -29,10 +32,7 @@ const UserData: FC = () => {
       </section>
       <section>
         <h3>実行回数</h3>
-        <p>
-          プラグインがCDN経由で{indicator.counter.toLocaleString()}回呼び出されました。(最終更新:{' '}
-          {lastModified})
-        </p>
+        <p>プラグインがCDN経由で{latestData.counter.toLocaleString()}回呼び出されました。</p>
       </section>
     </section>
   );
