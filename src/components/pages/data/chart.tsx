@@ -33,7 +33,7 @@ const Component: FC = () => {
         <YAxis />
         <Tooltip
           formatter={(value: number, name: string, props: any) => [
-            `${!isNaN(Number(value)) ? Number(value).toLocaleString() : value}社`,
+            `${value}社`,
             props.value === props.payload.total ? '導入法人数' : 'アクティブユーザー数',
           ]}
           labelFormatter={(unixTime) => getFormattedDate(new Date(unixTime), 'yyyy年M月d日')}
