@@ -26,9 +26,7 @@ const UserData: FC = () => {
           {latestData.active.toLocaleString()}
           社にご利用いただいています。
         </p>
-        <Suspense fallback={<p>Loading...</p>}>
-          <KintoneUserChart />
-        </Suspense>
+        <KintoneUserChart />
         <p className='text-slate-600 text-right'>
           <small>
             (アクティブユーザー数は、過去28日の間で1度でも実行されたユーザー数から算出しています)
