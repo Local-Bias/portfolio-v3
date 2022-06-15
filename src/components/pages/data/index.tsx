@@ -24,11 +24,16 @@ const UserData: FC = () => {
         <p>
           今まで{latestData.total.toLocaleString()}社に導入いただき、現在も
           {latestData.active.toLocaleString()}
-          社にご利用いただいています。(過去28日の間で1度でも実行されたユーザー数から算出)
+          社にご利用いただいています。
         </p>
         <Suspense fallback={<p>Loading...</p>}>
           <KintoneUserChart />
         </Suspense>
+        <p className='text-slate-600 text-right'>
+          <small>
+            (アクティブユーザー数は、過去28日の間で1度でも実行されたユーザー数から算出しています)
+          </small>
+        </p>
       </section>
       <section>
         <h3>実行回数</h3>
