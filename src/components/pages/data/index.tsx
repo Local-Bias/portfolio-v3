@@ -21,11 +21,17 @@ const UserData: FC = () => {
       <p>オープンソースで公開しているkintoneプラグインの利用状況です。</p>
       <section>
         <h3>利用法人数</h3>
-        <p>
-          今まで{latestData.total.toLocaleString()}社に導入いただき、現在も
-          {latestData.active.toLocaleString()}
-          社にご利用いただいています。
-        </p>
+        {!!latestData &&
+          !!latestData.total &&
+          !!latestData.active &&
+          !isNaN(Number(latestData.total)) &&
+          !isNaN(Number(latestData.active)) && (
+            <p>
+              今まで{latestData.total.toLocaleString()}社に導入いただき、現在も
+              {latestData.active.toLocaleString()}
+              社にご利用いただいています。
+            </p>
+          )}
         <KintoneUserChart />
         <p className='text-slate-600 text-right'>
           <small>
@@ -35,7 +41,11 @@ const UserData: FC = () => {
       </section>
       <section>
         <h3>実行回数</h3>
-        <p>プラグインがCDN経由で{latestData.counter.toLocaleString()}回呼び出されました。</p>
+        {!!latestData && !!latestData.counter && !isNaN(Number(latestData.counter)) ? (
+          <p>プラグインがCDN経由で{latestData.counter.toLocaleString()}回呼び出されました。</p>
+        ) : (
+          <p>実行回数の取得に失敗しました。</p>
+        )}
       </section>
     </section>
   );
