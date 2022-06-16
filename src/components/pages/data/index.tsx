@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import React, { FC, Suspense } from 'react';
+import React, { FC } from 'react';
 import { useStaticData } from 'src/components/providers/static-data';
 import { meta } from 'src/static/site-config';
 import KintoneUserChart from './chart';
