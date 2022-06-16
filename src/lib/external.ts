@@ -34,7 +34,7 @@ export const fetchKintoneActiveUser = async (): Promise<Record<
   const lastModified: Record<string, string> = lastModifiedSnapshot.val();
 
   let date = DateTime.local(2022, 2, 18);
-  let now = DateTime.local();
+  let now = DateTime.local().plus({ hours: 9 });
 
   const user = Object.entries(installDate).map(([domain, date]) => {
     return {
