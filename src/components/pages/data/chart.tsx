@@ -41,8 +41,6 @@ const Component: FC = () => {
               label = '導入企業数';
             } else if (dataKey === 'mau') {
               label = 'MAU';
-            } else if (dataKey === 'wau') {
-              label = 'WAU';
             } else if (dataKey === 'activeRate') {
               return [`${Math.round(value * 1000) / 10}%`, 'アクティブ率(MAU / DL)'];
             }
@@ -53,7 +51,6 @@ const Component: FC = () => {
 
         <Line yAxisId={1} dot={false} strokeWidth={2} dataKey='dl' stroke='#00b6cb' />
         <Line yAxisId={1} dot={false} strokeWidth={2} dataKey='mau' stroke='#4dccdb' />
-        <Line yAxisId={1} dot={false} strokeWidth={2} dataKey='wau' stroke='#99e2ea' />
         <Line yAxisId={2} dot={false} strokeWidth={2} dataKey='activeRate' stroke='#fea78c' />
       </LineChart>
     </ResponsiveContainer>
