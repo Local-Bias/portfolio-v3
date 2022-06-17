@@ -16,10 +16,10 @@ export const fetchKintoneUserSummary = async (): Promise<external.kintone.Summar
   return summary;
 };
 
-export const fetchKintoneActiveUser = async (): Promise<Record<
-  string,
-  website.graphData.Material
-> | null> => {
+export const fetchKintoneActiveUser = async (): Promise<{
+  mau: Record<string, website.graphData.Material>;
+  wau: Record<string, website.graphData.Material>;
+} | null> => {
   const installDateRef = ref(rtdb, 'kintone/installDate');
   const lastModifiedRef = ref(rtdb, 'kintone/lastModified');
 
@@ -48,18 +48,28 @@ export const fetchKintoneActiveUser = async (): Promise<Record<
     lastModified: DateTime;
   }[];
 
-  const results: Record<string, website.graphData.Material> = {};
+  const mau: Record<string, website.graphData.Material> = {};
+  const wau: Record<string, website.graphData.Material> = {};
 
   let loopIndex = 0;
   while (now > date) {
-    const targets = correctData.filter(
+    const monthly = correctData.filter(
       ({ installDate, lastModified }) =>
         date > installDate && date.minus({ days: 28 }) < lastModified
     );
 
-    results[date.toISODate()] = {
+    const weekly = correctData.filter(
+      ({ installDate, lastModified }) =>
+        date > installDate && date.minus({ days: 7 }) < lastModified
+    );
+
+    mau[date.toISODate()] = {
       unixTime: date.toUnixInteger() * 1000,
-      count: targets.length,
+      count: monthly.length,
+    };
+    wau[date.toISODate()] = {
+      unixTime: date.toUnixInteger() * 1000,
+      count: weekly.length,
     };
 
     date = date.plus({ days: 1 });
@@ -69,5 +79,5 @@ export const fetchKintoneActiveUser = async (): Promise<Record<
     }
   }
 
-  return results;
+  return { mau, wau };
 };

@@ -30,17 +30,31 @@ const Component: FC = () => {
           tickFormatter={(unixTime) => getFormattedDate(new Date(unixTime), 'yyyy-MM-dd')}
           type='number'
         />
-        <YAxis />
+        <YAxis yAxisId={1} tickFormatter={(tick) => `${tick}社`} />
+        <YAxis yAxisId={2} orientation='right' tickFormatter={(tick) => `${tick * 100}%`} />
         <Tooltip
-          formatter={(value: number, name: string, props: any) => [
-            value && !isNaN(Number(value)) ? `${value.toLocaleString()}社` : value,
-            props.value === props.payload.total ? '導入法人数' : 'アクティブユーザー数',
-          ]}
+          formatter={(value: number, name: string, props: any) => {
+            const dataKey = props.dataKey as keyof website.graphData.KintoneUser;
+
+            let label: string = dataKey;
+            if (dataKey === 'dl') {
+              label = '導入企業数';
+            } else if (dataKey === 'mau') {
+              label = 'MAU';
+            } else if (dataKey === 'wau') {
+              label = 'WAU';
+            } else if (dataKey === 'activeRate') {
+              return [`${Math.round(value * 1000) / 10}%`, 'アクティブ率(MAU / DL)'];
+            }
+            return [value && !isNaN(Number(value)) ? `${value.toLocaleString()}社` : value, label];
+          }}
           labelFormatter={(unixTime) => getFormattedDate(new Date(unixTime), 'yyyy年M月d日')}
         />
 
-        <Line dot={false} strokeWidth={3} type='monotone' dataKey='total' stroke='#00b6cb' />
-        <Line dot={false} strokeWidth={3} type='monotone' dataKey='active' stroke='#4dccdb' />
+        <Line yAxisId={1} dot={false} strokeWidth={2} dataKey='dl' stroke='#00b6cb' />
+        <Line yAxisId={1} dot={false} strokeWidth={2} dataKey='mau' stroke='#4dccdb' />
+        <Line yAxisId={1} dot={false} strokeWidth={2} dataKey='wau' stroke='#99e2ea' />
+        <Line yAxisId={2} dot={false} strokeWidth={2} dataKey='activeRate' stroke='#fea78c' />
       </LineChart>
     </ResponsiveContainer>
   );

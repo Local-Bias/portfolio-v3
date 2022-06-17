@@ -22,13 +22,13 @@ const UserData: FC = () => {
       <section>
         <h3>利用法人数</h3>
         {!!latestData &&
-          !!latestData.total &&
-          !!latestData.active &&
-          !isNaN(Number(latestData.total)) &&
-          !isNaN(Number(latestData.active)) && (
+          !!latestData.dl &&
+          !!latestData.mau &&
+          !isNaN(Number(latestData.dl)) &&
+          !isNaN(Number(latestData.mau)) && (
             <p>
-              今まで{latestData.total.toLocaleString()}社に導入いただき、現在も
-              {latestData.active.toLocaleString()}
+              今まで{latestData.dl.toLocaleString()}社に導入いただき、現在も
+              {latestData.mau.toLocaleString()}
               社にご利用いただいています。
             </p>
           )}

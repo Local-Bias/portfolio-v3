@@ -25,8 +25,10 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
     kintoneGraphData = Object.entries(kintoneUserSummary).map(([date, summary]) => {
       return {
         unixTime: summary.unixTime * 1000,
-        total: summary.numUsers,
-        active: kintoneActiveUser[date]?.count ?? null,
+        dl: summary.numUsers,
+        mau: kintoneActiveUser?.mau[date]?.count ?? null,
+        wau: kintoneActiveUser?.wau[date]?.count ?? null,
+        activeRate: (kintoneActiveUser?.mau[date]?.count || 0) / summary.numUsers,
         counter: summary.counter,
       };
     });
