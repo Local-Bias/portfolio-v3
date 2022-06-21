@@ -8,7 +8,7 @@ const Component: FC = () => (
       <title>{meta.title}</title>
     </Head>
     <div className='h-[80vh] flex flex-col justify-center items-center'>
-      <img src='/img/person.webp' alt='シャツを着た人' width={200} height={200} />
+      <img src='/img/person.webp' alt='シャツを着た人' loading='eager' width={200} height={200} />
       <div>Ribbit</div>
     </div>
   </>

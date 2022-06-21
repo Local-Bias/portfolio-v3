@@ -60,7 +60,13 @@ const Component: FC = () => (
     </Head>
     <article className='px-4 py-8 md:py-16'>
       <div className='flex justify-center'>
-        <img src='/img/presentation.webp' alt='プレゼンする人' width={200} height={200} />
+        <img
+          src='/img/presentation.webp'
+          alt='プレゼンする人'
+          loading='eager'
+          width={200}
+          height={200}
+        />
       </div>
       <h1 className='mt-8'>{TITLE}</h1>
       <section></section>

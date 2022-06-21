@@ -71,7 +71,7 @@ const Component: FC = () => (
     </Head>
     <article className='px-4 py-8 md:py-16'>
       <div className='flex justify-center'>
-        <img src='/img/repair-shop.webp' alt='修理業者' width={200} height={200} />
+        <img src='/img/repair-shop.webp' alt='修理業者' loading='eager' width={200} height={200} />
       </div>
       <h1 className='mt-8'>身につけたもの</h1>
       <SkillTree skills={skills} />
