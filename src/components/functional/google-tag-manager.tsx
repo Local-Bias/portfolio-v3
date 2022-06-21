@@ -7,7 +7,6 @@ const Component: FC = () => {
   }
   return (
     <Script
-      id='gtm'
       strategy='afterInteractive'
       dangerouslySetInnerHTML={{
         __html: `
