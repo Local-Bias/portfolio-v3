@@ -111,7 +111,7 @@ export type Indicator = {
 export type Product = {
   title: string;
   descriptions: string[];
-  img?: string;
+  images?: { url: string; alt: string }[];
   indicators?: Indicator[];
   link?: string;
   linkLabel?: string;
@@ -129,6 +129,7 @@ export const products: Product[] = [
     indicators: [],
     link: 'https://kula.konomi.app',
     linkLabel: 'サイトはこちら',
+    images: [{ url: '/img/products/kula-infrastructure.webp', alt: 'システム構成図' }],
   },
   {
     title: 'kintoneプラグイン',
