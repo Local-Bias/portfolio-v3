@@ -20,7 +20,9 @@ const Component: FC = () => (
             <p key={`${i}-${j}`}>{description}</p>
           ))}
           {!!product.images?.length &&
-            product.images.map(({ url, alt }, j) => <img src={url} alt={alt} loading='lazy' />)}
+            product.images.map(({ url, alt }, j) => (
+              <img key={`img${i}-${j}`} src={url} alt={alt} loading='lazy' />
+            ))}
           {!!product.link && (
             <a target='_blank' href={product.link} rel='nofollow noopener noreferrer'>
               {product.linkLabel || 'サイトはこちら'}
