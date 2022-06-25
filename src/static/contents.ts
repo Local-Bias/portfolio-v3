@@ -22,6 +22,7 @@ export const skills: Skill[] = [
           { name: 'React', type: 'inProgress', since: new Date(2021, 0, 1) },
           { name: 'Next.js', type: 'inProgress', since: new Date(2021, 5, 1) },
           { name: 'Gatsby.js', type: 'pending', daysOfExperience: 365 },
+          { name: 'Jest', type: 'inProgress', since: new Date(2022, 5, 23) },
         ],
       },
       { name: 'Node.js', type: 'inProgress', since: new Date(2021, 0, 1) },
@@ -52,7 +53,7 @@ export const skills: Skill[] = [
     children: [{ name: 'db2', type: 'pending', daysOfExperience: 365 * 2 + 30 * 9 }],
   },
   {
-    name: 'ツール',
+    name: 'ツール・サービス',
     type: 'pending',
     daysOfExperience: 0,
     children: [
@@ -60,6 +61,7 @@ export const skills: Skill[] = [
       { name: 'Docker', type: 'inProgress', since: new Date(2022, 0, 1) },
       { name: 'Git', type: 'inProgress', since: new Date(2021, 0, 1) },
       { name: 'Firebase', type: 'inProgress', since: new Date(2022, 0, 1) },
+      { name: 'Sentry', type: 'inProgress', since: new Date(2022, 5, 23) },
     ],
   },
 ];
