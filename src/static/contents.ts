@@ -151,6 +151,7 @@ export const products: Product[] = [
       'kintoneに用意されているエコシステムの1つとして、プラグインがあります。プラグインの構成はChromeの拡張機能に似ており、HTML、CSS、JavaScriptで構成され、導入することで、kintoneの機能を拡張することができます。',
       '私はオープンソースで10個以上のプラグインを公開しており、導入いただいた法人は2022年5月に600社を超えました。',
     ],
+    images: [{ url: '/img/products/plugin-flow.webp', alt: '開発とリリースフロー' }],
     link: 'https://ribbit.konomi.app/kintone-plugin',
     linkLabel: '紹介ページはこちら',
   },
