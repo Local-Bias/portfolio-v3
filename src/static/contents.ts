@@ -117,6 +117,10 @@ export type Product = {
   indicators?: Indicator[];
   link?: string;
   linkLabel?: string;
+  additional?: {
+    title: string;
+    description: string;
+  }[];
 };
 
 export const products: Product[] = [
@@ -132,6 +136,14 @@ export const products: Product[] = [
     link: 'https://kula.konomi.app',
     linkLabel: 'サイトはこちら',
     images: [{ url: '/img/products/kula-infrastructure.webp', alt: 'システム構成図' }],
+    additional: [
+      { title: '言語', description: 'TypeScript, Node.js' },
+      { title: 'フレームワーク', description: 'React, Next.js' },
+      {
+        title: 'ツール・サービス',
+        description: 'Firebase(認証機能・データベース・ストレージ), Sentry(エラーログ)',
+      },
+    ],
   },
   {
     title: 'kintoneプラグイン',
@@ -232,8 +244,11 @@ export const todoList: { title: string; descriptions: string[] }[] = [
   {
     title: '「貢献したい」と思えるような会社づくりのサポートをしたい',
     descriptions: [
+      '皆さんの会社に「仕事のできない社員」は居ますか？',
+      '「仕事のできない社員」が退職すると、別の誰かが「仕事のできない社員」に変わり、全体を占める「仕事のできない社員」の比率は変わらないと言われています。なぜでしょうか。',
+      '僕はこれを「全員頭が良いため、自分の置かれた環境に最適化するよう動くから」だと思っています。',
       'スターリン時代のソビエト連邦も、毛沢東時代の中国も、国民の能力が他の国より劣っていたから衰退したわけではありません。',
-      '共産主義という国の「ルール」に綻びがあったからこそ衰退をまねいたのだと考えています。',
+      '衰退してしまうようなルールの上で全員が最適化したからだと思っています。',
       '「ルール」によるパフォーマンスの影響は規模を問いません。企業であっても同じです。',
       '適切な「ルール」を設定できていない企業は、たとえどんな優秀な社員をかかえていても衰退し、適切な「ルール」を設定できている企業は、社員の能力を問わず成長します。',
       '私は適切な「ルール」の運用をサポートするようなシステム開発に携わりたいと思っています。',
