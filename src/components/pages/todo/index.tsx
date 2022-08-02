@@ -18,10 +18,12 @@ const Component: FC = () => (
           height={200}
         />
       </div>
-      <h1 className='mt-8'>やること(やりたいこと)</h1>
-      {todoList.map(({ title, descriptions }, i) => (
+      <h1 className='mt-8'>やること</h1>
+      {todoList.map(({ year, title, descriptions }, i) => (
         <section key={i}>
-          <h2>{title}</h2>
+          <h2>
+            {year}年 -{title}
+          </h2>
           {descriptions.map((description, j) => (
             <p key={`${i}-${j}`}>{description}</p>
           ))}
