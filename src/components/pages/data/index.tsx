@@ -3,6 +3,7 @@ import React, { FC } from 'react';
 import { useStaticData } from 'src/components/providers/static-data';
 import { meta } from 'src/static/site-config';
 import KintoneUserChart from './chart';
+import Jsdelivr from './jsdelivr';
 
 const TITLE = `数字で知るRibbit`;
 
@@ -39,14 +40,7 @@ const UserData: FC = () => {
           </small>
         </p>
       </section>
-      <section>
-        <h3>実行回数</h3>
-        {!!latestData && !!latestData.counter && !isNaN(Number(latestData.counter)) ? (
-          <p>プラグインがCDN経由で{latestData.counter.toLocaleString()}回呼び出されました。</p>
-        ) : (
-          <p>実行回数の取得に失敗しました。</p>
-        )}
-      </section>
+      <Jsdelivr />
     </section>
   );
 };

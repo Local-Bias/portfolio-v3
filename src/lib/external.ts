@@ -81,3 +81,38 @@ export const fetchKintoneActiveUser = async (): Promise<{
 
   return { mau, wau };
 };
+
+export const fetchJsdelivr = async () => {
+  const repositories = [
+    'kintone-plugin-smart-view',
+    'kintone-plugin-tab',
+    'kintone-plugin-unrelated-lookup',
+    'kintone-plugin-lookup-myself',
+    'kintone-plugin-xlsx',
+    'kintone-plugin-slider',
+    'kintone-plugin-simply-copy',
+    'kintone-plugin-age',
+    'kintone-plugin-calendar',
+    'kintone-plugin-tooltip',
+    'kintone-plugin-editable',
+  ];
+
+  const responses = await Promise.allSettled(
+    repositories.map((repository) =>
+      fetch(`https://data.jsdelivr.com/v1/package/gh/local-bias/${repository}/stats`)
+    )
+  );
+
+  let results: {
+    repository: string;
+    data: external.jsdelivr.Stats;
+  }[] = [];
+  responses.forEach(async (response, i) => {
+    if (response.status !== 'fulfilled') {
+      return;
+    }
+    results.push({ repository: repositories[i], data: await response.value.json() });
+  });
+
+  return results;
+};

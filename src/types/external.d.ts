@@ -13,4 +13,15 @@ declare namespace external {
 
     type Summary = Record<string, SummaryItem>;
   }
+
+  namespace jsdelivr {
+    type Stats = {
+      rank: number;
+      typeRank: number;
+      total: number;
+      versions: any;
+      commits: any;
+      branches: any;
+    };
+  }
 }
