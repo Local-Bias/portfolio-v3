@@ -6,29 +6,19 @@ import { getFormattedDate } from 'src/lib/util';
 
 type StaticProps = {
   kintoneGraphData: website.graphData.KintoneUser[] | null;
-  jsdelivrData:
-    | {
-        repository: string;
-        data: external.jsdelivr.Stats;
-      }[]
-    | null;
   lastModified: string;
 };
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
-  const [kintoneUserSummaryResult, kintoneActiveUserResult, jsdelivrResult] =
-    await Promise.allSettled([
-      fetchKintoneUserSummary(),
-      fetchKintoneActiveUser(),
-      fetchJsdelivr(),
-    ]);
+  const [kintoneUserSummaryResult, kintoneActiveUserResult] = await Promise.allSettled([
+    fetchKintoneUserSummary(),
+    fetchKintoneActiveUser(),
+  ]);
 
   const kintoneUserSummary =
     kintoneUserSummaryResult.status === 'fulfilled' ? kintoneUserSummaryResult.value : null;
   const kintoneActiveUser =
     kintoneActiveUserResult.status === 'fulfilled' ? kintoneActiveUserResult.value : null;
-
-  const jsdelivrData = jsdelivrResult.status === 'fulfilled' ? jsdelivrResult.value : null;
 
   let kintoneGraphData: website.graphData.KintoneUser[] = [];
   if (kintoneUserSummary && kintoneActiveUser) {
@@ -50,7 +40,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   const lastModified = getFormattedDate(us, 'M月d日');
 
   return {
-    props: { kintoneGraphData, jsdelivrData, lastModified },
+    props: { kintoneGraphData, lastModified },
     revalidate: 6 * 60 * 60,
   };
 };

@@ -2,24 +2,12 @@ import { ReactNode, createContext, useContext } from 'react';
 
 export type ContextProps = Partial<{
   kintoneGraphData: website.graphData.KintoneUser[] | null;
-  jsdelivrData:
-    | {
-        repository: string;
-        data: external.jsdelivr.Stats;
-      }[]
-    | null;
   lastModified: string | null;
 }>;
 
 export type ProviderProps = {
   initialValue: {
     kintoneGraphData: website.graphData.KintoneUser[] | null;
-    jsdelivrData:
-      | {
-          repository: string;
-          data: external.jsdelivr.Stats;
-        }[]
-      | null;
     lastModified: string | null;
   };
   children: ReactNode;
