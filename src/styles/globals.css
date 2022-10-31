@@ -8,6 +8,21 @@ body {
   @apply text-black font-normal;
 }
 
+::selection {
+  background: #1e8cbe77;
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  @apply w-1 h-1 md:w-2 md:h-2;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-400 rounded-sm;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
 article li {
   @apply ml-4;
 }
