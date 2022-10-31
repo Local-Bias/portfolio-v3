@@ -20,6 +20,12 @@ const UserData: FC = () => {
     <section>
       <h2>kintoneプラグインの利用者情報</h2>
       <p>オープンソースで公開しているkintoneプラグインの利用状況です。</p>
+      <p>
+        プラグインの一覧は
+        <a target='_blank' rel='noreferrer' href='//ribbit.konomi.app/kintone-plugin'>
+          こちら
+        </a>
+      </p>
       <section>
         <h3>利用法人数</h3>
         {!!latestData &&
