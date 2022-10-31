@@ -31,8 +31,9 @@ const Component: FC = () => {
           type='number'
         />
         <YAxis yAxisId={1} tickFormatter={(tick) => `${tick}社`} />
-        <YAxis yAxisId={2} orientation='right' tickFormatter={(tick) => `${tick * 100}%`} />
+        <YAxis yAxisId={2} orientation='right' tickFormatter={(tick) => `${tick}社`} />
         <Tooltip
+          /**@ts-ignore */
           formatter={(value: number, name: string, props: any) => {
             const dataKey = props.dataKey as keyof website.graphData.KintoneUser;
 
@@ -41,8 +42,6 @@ const Component: FC = () => {
               label = '導入企業数';
             } else if (dataKey === 'mau') {
               label = 'MAU';
-            } else if (dataKey === 'activeRate') {
-              return [`${Math.round(value * 1000) / 10}%`, 'アクティブ率(MAU / DL)'];
             }
             return [value && !isNaN(Number(value)) ? `${value.toLocaleString()}社` : value, label];
           }}
@@ -50,8 +49,7 @@ const Component: FC = () => {
         />
 
         <Line yAxisId={1} dot={false} strokeWidth={2} dataKey='dl' stroke='#00b6cb' />
-        <Line yAxisId={1} dot={false} strokeWidth={2} dataKey='mau' stroke='#4dccdb' />
-        <Line yAxisId={2} dot={false} strokeWidth={2} dataKey='activeRate' stroke='#fea78c' />
+        <Line yAxisId={2} dot={false} strokeWidth={2} dataKey='mau' stroke='#fea78c' />
       </LineChart>
     </ResponsiveContainer>
   );
