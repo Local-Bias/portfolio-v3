@@ -41,7 +41,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
 
   return {
     props: { kintoneGraphData, lastModified },
-    revalidate: 6 * 60 * 60,
+    revalidate: 12 * 60 * 60,
   };
 };
 
