@@ -158,7 +158,7 @@ export const products: Product[] = [
   {
     title: 'ブログ',
     descriptions: [
-      '初めてSG(SSG)に触れ、作ったものです。ホスティングはGatsbyCloud(現在はCloudflare Pages)、コンテンツ管理はContentful、プログラムはGithubという構成で作成。月の閲覧数は6,000程です。',
+      '初めてSG(SSG)に触れ、作ったものです。ホスティングはGatsbyCloud(現在はCloudflare Pages)、コンテンツ管理はContentful、プログラムはGithubという構成で作成。閲覧数は最も高い時で4万PV/月です。',
     ],
     images: [{ url: '/img/products/ribbit.konomi.app-flow.webp', alt: 'システム構成図' }],
     link: 'https://ribbit.konomi.app',
