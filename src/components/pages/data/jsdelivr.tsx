@@ -49,6 +49,8 @@ const Component: FC = () => {
           'kintone-plugin-calendar',
           'kintone-plugin-tooltip',
           'kintone-plugin-editable',
+          'kintone-plugin-chatgpt',
+          'kintone-plugin-ref',
         ].map((repository) => (
           <Achievement key={repository} repository={repository} />
         ))}
