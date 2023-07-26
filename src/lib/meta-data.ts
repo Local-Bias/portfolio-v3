@@ -4,9 +4,9 @@ export const META_DATA = {
   },
   CANONICAL: 'https://ribbit.konomi.app',
   COMPANY: {
-    NAME: 'Nuts App',
-    EMAIL: 'nuts.web.app@gmail.com',
-    LOGO: 'https://konomi.app/logo.png',
+    NAME: 'konomi.app',
+    EMAIL: 'adachi@konomi.app',
+    LOGO: 'https://assets.konomi.app/img/logo.png',
   },
   AUTHOR: {
     NAME: 'Ribbit',
