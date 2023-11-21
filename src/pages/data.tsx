@@ -1,6 +1,6 @@
 import type { GetStaticProps, NextPage } from 'next';
 import { StaticDataProvider } from 'src/components/providers/static-data';
-import { fetchJsdelivr, fetchKintoneActiveUser, fetchKintoneUserSummary } from 'src/lib/external';
+import { fetchKintoneActiveUser, fetchKintoneUserSummary } from 'src/lib/external';
 import Page from 'src/components/pages/data';
 import { getFormattedDate } from 'src/lib/util';
 
@@ -8,6 +8,8 @@ type StaticProps = {
   kintoneGraphData: website.graphData.KintoneUser[] | null;
   lastModified: string;
 };
+
+const GRAPH_POINT_COUNT = 100;
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   const [kintoneUserSummaryResult, kintoneActiveUserResult] = await Promise.allSettled([
@@ -22,14 +24,18 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
 
   let kintoneGraphData: website.graphData.KintoneUser[] = [];
   if (kintoneUserSummary && kintoneActiveUser) {
-    const targetEntries = Object.entries(kintoneUserSummary).reduce<
-      [string, external.kintone.SummaryItem][]
-    >((acc, summary, i) => {
-      if (i % 3 === 0) {
-        acc.push(summary);
-      }
-      return acc;
-    }, []);
+    const entries = Object.entries(kintoneUserSummary);
+    const step = Math.floor(entries.length / GRAPH_POINT_COUNT);
+
+    const targetEntries = entries.reduce<[string, external.kintone.SummaryItem][]>(
+      (acc, summary, i) => {
+        if (i % step === 0) {
+          acc.push(summary);
+        }
+        return acc;
+      },
+      []
+    );
 
     kintoneGraphData = targetEntries.map(([date, summary]) => {
       return {
