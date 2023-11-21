@@ -22,7 +22,16 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
 
   let kintoneGraphData: website.graphData.KintoneUser[] = [];
   if (kintoneUserSummary && kintoneActiveUser) {
-    kintoneGraphData = Object.entries(kintoneUserSummary).map(([date, summary]) => {
+    const targetEntries = Object.entries(kintoneUserSummary).reduce<
+      [string, external.kintone.SummaryItem][]
+    >((acc, summary, i) => {
+      if (i % 3 === 0) {
+        acc.push(summary);
+      }
+      return acc;
+    }, []);
+
+    kintoneGraphData = targetEntries.map(([date, summary]) => {
       return {
         unixTime: summary.unixTime * 1000,
         dl: summary.numUsers,
